@@ -85,8 +85,8 @@ resource "aws_instance" "web" {
   user_data = <<-EOF
   #!/bin/bash
   echo "*** Installing apache2"
-  sudo apt update -y
-  sudo apt install apache2 -y
+  sudo yum update -y
+  sudo yum install apache2 -y
   echo "*** Completed Installing apache2"
   EOF
 
