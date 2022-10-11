@@ -7,6 +7,9 @@ default = "t2.micro"
 variable "ami_id" {
 default = "ami-01216e7612243e0ef"
 }
+variable "iam_role" {
+default = "AWSEC2ROLEFORSSM"
+}
 variable "profile_name" {
 default = "default"
 }

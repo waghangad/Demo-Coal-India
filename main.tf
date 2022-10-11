@@ -78,6 +78,7 @@ resource "aws_route_table_association" "public_rt_asso_2" {
 resource "aws_instance" "web" {
   ami           = var.ami_id
   instance_type = var.instance_type
+  iam_instance_profile = var.iam_role
   key_name = var.instance_key
   subnet_id              = aws_subnet.public_subnet1.id
   security_groups = [aws_security_group.sg.id]
