@@ -93,7 +93,7 @@ resource "aws_instance" "web" {
   sudo cp httpd.conf /etc/httpd/conf/
   sudo systemctl start httpd
   sudo systemctl enable httpd
-  echo 'This is Coal India PoC' >> /var/www/html/index.html
+  echo 'This is Sample Application' >> /var/www/html/index.html
   echo "*** Completed Installing apache2"
   EOF
 
