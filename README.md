@@ -23,6 +23,7 @@ Following points which we need to demonstrate.
   echo "*** Completed Installing apache2"
 
 # Second approch install httpd at custom port 8080
+# Also please change sg configuration
 
   #!/bin/bash
   echo "*** Installing apache2"
@@ -36,5 +37,13 @@ Following points which we need to demonstrate.
   echo 'This is Coal India PoC' >> /var/www/html/index.html
   echo "*** Completed Installing apache2"
 
+ingress {
+    description      = "HTTP from VPC"
+    from_port        = 8080
+    to_port          = 8080
+    protocol         = "tcp"
+    cidr_blocks      = ["0.0.0.0/0"]
+    ipv6_cidr_blocks = ["::/0"]
+  }
 
   https://www.hashicorp.com/blog/drift-detection-for-terraform-cloud-is-now-generally-available
