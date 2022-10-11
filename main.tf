@@ -98,3 +98,4 @@ resource "aws_instance" "web" {
     Name = "web_instance"
   } 
 }
+
