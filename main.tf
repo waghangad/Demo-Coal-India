@@ -87,7 +87,10 @@ resource "aws_instance" "web" {
   #!/bin/bash
   echo "*** Installing apache2"
   sudo yum update -y
-  sudo yum install apache2 -y
+  sudo yum install httpd -y
+  sudo systemctl start httpd
+  sudo systemctl enable httpd
+  echo 'This is Coal India PoC' >> index.html
   echo "*** Completed Installing apache2"
   EOF
 
