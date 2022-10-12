@@ -104,7 +104,7 @@ resource "aws_lb_target_group_attachment" "web-instance-80-2" {
   port             = 80
 }
 
-resource "aws_lb_listener" "front_end" {
+resource "aws_lb_listener" "front_end_80" {
   load_balancer_arn = aws_lb.web-app-alb.arn
   port              = "80"
   protocol          = "HTTP"
@@ -134,7 +134,7 @@ resource "aws_lb_target_group_attachment" "web-instance-8080-2" {
   port             = 8080
 }
 
-resource "aws_lb_listener" "front_end" {
+resource "aws_lb_listener" "front_end_8080" {
   load_balancer_arn = aws_lb.web-app-alb.arn
   port              = "8080"
   protocol          = "HTTP"
