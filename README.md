@@ -1,6 +1,10 @@
 # demo terraform setup
 Demo resource creation using terraform
 
+# Destroy all resources created using this terraform workspace.
+
+~ workspace > settings > Destruction and Deletion > Queue destroy plan
+
 # First approch install httpd at default port 80
 
 #!/bin/bash
