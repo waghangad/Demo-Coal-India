@@ -13,7 +13,7 @@ Demo resource creation using terraform
   sudo yum install httpd -y
   sudo systemctl start httpd
   sudo systemctl enable httpd
-  echo 'This is Sample Application' >> /var/www/html/index.html
+  echo '<body style = "background:pink"><b>This is Sample App 1</b> </body>' >> /var/www/html/index.html
   echo "*** Completed Installing apache2"
 
 # Second approch install httpd at custom port 8080
