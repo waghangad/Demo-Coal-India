@@ -1,3 +1,3 @@
 output "aws_alb_endpoint" {
-    value = aws_lb.web-app-alb.dns
+    value = aws_lb.web-app-alb.dns_name
 }
