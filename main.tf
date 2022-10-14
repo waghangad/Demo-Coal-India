@@ -57,7 +57,7 @@ resource "aws_instance" "web-server-2" {
   sudo yum install httpd -y
   sudo systemctl start httpd
   sudo systemctl enable httpd
-  echo '<body style = "background:pink"><h1>Sample Web Application From Server 2</h1></body>' >> /var/www/html/index.html
+  echo '<body style = "background:yellow"><h1>Sample Web Application From Server 2</h1></body>' >> /var/www/html/index.html
   echo "*** Completed Installing apache2"
   EOF
 
