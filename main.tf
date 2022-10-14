@@ -27,12 +27,9 @@ resource "aws_instance" "web-server-1" {
   echo "*** Installing apache2"
   sudo yum update -y
   sudo yum install httpd -y
-  sudo sed 's/80/8080/' /etc/httpd/conf/httpd.conf >> httpd.conf
-  sudo rm -rf /etc/httpd/conf/httpd.conf
-  sudo cp httpd.conf /etc/httpd/conf/
   sudo systemctl start httpd
   sudo systemctl enable httpd
-  echo '<body style = "background:pink"><h1>This is Coal India Sample App 2</h1> </body>' >> /var/www/html/index.html
+  echo '<body style = "background:coral"><h1>Sample Web Application From Server 1</h1></body>' >> /var/www/html/index.html
   echo "*** Completed Installing apache2"
   EOF
 
@@ -58,12 +55,9 @@ resource "aws_instance" "web-server-2" {
   echo "*** Installing apache2"
   sudo yum update -y
   sudo yum install httpd -y
-  sudo sed 's/80/8080/' /etc/httpd/conf/httpd.conf >> httpd.conf
-  sudo rm -rf /etc/httpd/conf/httpd.conf
-  sudo cp httpd.conf /etc/httpd/conf/
   sudo systemctl start httpd
   sudo systemctl enable httpd
-  echo '<body style = "background:pink"><h1>This is Coal India Sample App 2</h1> </body>' >> /var/www/html/index.html
+  echo '<body style = "background:pink"><h1>Sample Web Application From Server 2</h1></body>' >> /var/www/html/index.html
   echo "*** Completed Installing apache2"
   EOF
 
@@ -114,7 +108,7 @@ resource "aws_lb_listener" "front_end_80" {
   }
 }
 
-
+/*
 resource "aws_lb_target_group" "web-app-8080-tg" {
   name     = "web-app-8080-tg"
   port     = 8080
@@ -143,3 +137,4 @@ resource "aws_lb_listener" "front_end_8080" {
     target_group_arn = aws_lb_target_group.web-app-8080-tg.arn
   }
 }
+*/

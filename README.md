@@ -20,7 +20,7 @@
   sudo yum install httpd -y
   sudo systemctl start httpd
   sudo systemctl enable httpd
-  echo '<body style = "background:pink"><b>This is Sample App 1</b> </body>' >> /var/www/html/index.html
+  echo '<body style = "background:coral"><h1>Sample Web Application From Server 1</h1></body>' >> /var/www/html/index.html
   echo "*** Completed Installing apache2"
 
 # Second approch install httpd at custom port 8080
@@ -34,7 +34,7 @@
   sudo cp httpd.conf /etc/httpd/conf/
   sudo systemctl start httpd
   sudo systemctl enable httpd
-  echo '<body style = "background:pink"><h1>This is Coal India Sample App 2</h1> </body>' >> /var/www/html/index.html
+  echo '<body style = "background:pink"><h1>Sample Web Application From Server 1</h1></body>' >> /var/www/html/index.html
   echo "*** Completed Installing apache2"
 
   https://www.hashicorp.com/blog/drift-detection-for-terraform-cloud-is-now-generally-available
