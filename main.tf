@@ -98,6 +98,7 @@ resource "aws_lb_target_group_attachment" "web-instance-80-2" {
   port             = 80
 }
 
+
 resource "aws_lb_target_group" "web-app-8080-tg" {
   name     = "web-app-8080-tg"
   port     = 8080
@@ -117,24 +118,13 @@ resource "aws_lb_target_group_attachment" "web-instance-8080-2" {
   port             = 8080
 }
 
-resource "aws_lb_listener" "front_end_80" {
-  load_balancer_arn = aws_lb.web-app-alb.arn
-  port              = "8080"
-  protocol          = "HTTP"
-  default_action {
-    type             = "forward"
-    target_group_arn = aws_lb_target_group.web-app-8080-tg.arn
-  }
-}
 
-/*
-resource "aws_lb_listener" "front_end_8080" {
+resource "aws_lb_listener" "front_end" {
   load_balancer_arn = aws_lb.web-app-alb.arn
-  port              = "8080"
+  port              = "80"
   protocol          = "HTTP"
   default_action {
     type             = "forward"
-    target_group_arn = aws_lb_target_group.web-app-8080-tg.arn
+    target_group_arn = aws_lb_target_group.web-app-80-tg.arn
   }
 }
-*/
