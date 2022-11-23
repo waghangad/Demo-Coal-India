@@ -27,12 +27,9 @@ resource "aws_instance" "web-server-1" {
   echo "*** Installing apache2"
   sudo yum update -y
   sudo yum install httpd -y
-  sudo sed 's/80/8080/' /etc/httpd/conf/httpd.conf >> httpd.conf
-  sudo rm -rf /etc/httpd/conf/httpd.conf
-  sudo cp httpd.conf /etc/httpd/conf/
   sudo systemctl start httpd
   sudo systemctl enable httpd
-  echo '<body style = "background:pink"><h1>Sample Web Application From Server 1</h1></body>' >> /var/www/html/index.html
+  echo '<body style = "background:coral"><h1>Sample Web Application From Server 1</h1></body>' >> /var/www/html/index.html
   echo "*** Completed Installing apache2"
   EOF
 
@@ -58,9 +55,6 @@ resource "aws_instance" "web-server-2" {
   echo "*** Installing apache2"
   sudo yum update -y
   sudo yum install httpd -y
-  sudo sed 's/80/8080/' /etc/httpd/conf/httpd.conf >> httpd.conf
-  sudo rm -rf /etc/httpd/conf/httpd.conf
-  sudo cp httpd.conf /etc/httpd/conf/
   sudo systemctl start httpd
   sudo systemctl enable httpd
   echo '<body style = "background:yellow"><h1>Sample Web Application From Server 2</h1></body>' >> /var/www/html/index.html
@@ -105,32 +99,32 @@ resource "aws_lb_target_group_attachment" "web-instance-80-2" {
 }
 
 
-resource "aws_lb_target_group" "web-app-8080-tg" {
-  name     = "web-app-8080-tg"
-  port     = 8080
-  protocol = "HTTP"
-  vpc_id   = aws_vpc.app_vpc.id
-}
+# resource "aws_lb_target_group" "web-app-8080-tg" {
+#   name     = "web-app-8080-tg"
+#   port     = 8080
+#   protocol = "HTTP"
+#   vpc_id   = aws_vpc.app_vpc.id
+# }
 
-resource "aws_lb_target_group_attachment" "web-instance-8080-1" {
-  target_group_arn = aws_lb_target_group.web-app-8080-tg.arn
-  target_id        = aws_instance.web-server-1.id
-  port             = 8080
-}
+# resource "aws_lb_target_group_attachment" "web-instance-8080-1" {
+#   target_group_arn = aws_lb_target_group.web-app-8080-tg.arn
+#   target_id        = aws_instance.web-server-1.id
+#   port             = 8080
+# }
 
-resource "aws_lb_target_group_attachment" "web-instance-8080-2" {
-  target_group_arn = aws_lb_target_group.web-app-8080-tg.arn
-  target_id        = aws_instance.web-server-2.id
-  port             = 8080
-}
+# resource "aws_lb_target_group_attachment" "web-instance-8080-2" {
+#   target_group_arn = aws_lb_target_group.web-app-8080-tg.arn
+#   target_id        = aws_instance.web-server-2.id
+#   port             = 8080
+# }
 
 
 resource "aws_lb_listener" "front_end" {
   load_balancer_arn = aws_lb.web-app-alb.arn
-  port              = "8080"
+  port              = "80"
   protocol          = "HTTP"
   default_action {
     type             = "forward"
-    target_group_arn = aws_lb_target_group.web-app-8080-tg.arn
+    target_group_arn = aws_lb_target_group.web-app-80-tg.arn
   }
 }
