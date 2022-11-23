@@ -99,32 +99,32 @@ resource "aws_lb_target_group_attachment" "web-instance-80-2" {
 }
 
 
-# resource "aws_lb_target_group" "web-app-8080-tg" {
-#   name     = "web-app-8080-tg"
-#   port     = 8080
-#   protocol = "HTTP"
-#   vpc_id   = aws_vpc.app_vpc.id
-# }
+resource "aws_lb_target_group" "web-app-8080-tg" {
+  name     = "web-app-8080-tg"
+  port     = 8080
+  protocol = "HTTP"
+  vpc_id   = aws_vpc.app_vpc.id
+}
 
-# resource "aws_lb_target_group_attachment" "web-instance-8080-1" {
-#   target_group_arn = aws_lb_target_group.web-app-8080-tg.arn
-#   target_id        = aws_instance.web-server-1.id
-#   port             = 8080
-# }
+resource "aws_lb_target_group_attachment" "web-instance-8080-1" {
+  target_group_arn = aws_lb_target_group.web-app-8080-tg.arn
+  target_id        = aws_instance.web-server-1.id
+  port             = 8080
+}
 
-# resource "aws_lb_target_group_attachment" "web-instance-8080-2" {
-#   target_group_arn = aws_lb_target_group.web-app-8080-tg.arn
-#   target_id        = aws_instance.web-server-2.id
-#   port             = 8080
-# }
+resource "aws_lb_target_group_attachment" "web-instance-8080-2" {
+  target_group_arn = aws_lb_target_group.web-app-8080-tg.arn
+  target_id        = aws_instance.web-server-2.id
+  port             = 8080
+}
 
 
 resource "aws_lb_listener" "front_end" {
   load_balancer_arn = aws_lb.web-app-alb.arn
-  port              = "80"
+  port              = "8080"
   protocol          = "HTTP"
   default_action {
     type             = "forward"
-    target_group_arn = aws_lb_target_group.web-app-80-tg.arn
+    target_group_arn = aws_lb_target_group.web-app-8080-tg.arn
   }
 }
